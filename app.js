@@ -8,7 +8,7 @@ newDice.className = "btn1";
 const rerollDice = document.createElement("button");
 rerollDice.innerHTML = "Re-Roll Dice";
 rerollDice.className = "btn2";
-rerollDice.id = "btn2";
+
 
 const addDice = document.createElement("button");
 addDice.innerHTML = "Sum of Dice";
@@ -59,6 +59,7 @@ class Dice {
     });
     this.die.addEventListener("click", () => this.roll());
     rerollDice.addEventListener("click", () => this.roll());
+    advancedBtn.addEventListener("click", () => this.advanced());
   
   }
 
@@ -66,28 +67,31 @@ class Dice {
     this.value = randomNum();
     this.die.id = this.value;
     this.die.innerHTML = this.value;
-
-    // if ((acutalDie = true)) {
-    //   if (this.value === 1) {
-    //     this.die.innerHTML = "\u2680";
-    //   } else if (this.value === 2) {
-    //     this.die.innerHTML = "\u2681";
-    //   } else if (this.value === 3) {
-    //     this.die.innerHTML = "\u2682";
-    //   } else if (this.value === 4) {
-    //     this.die.innerHTML = "\u2683";
-    //   } else if (this.value === 5) {
-    //     this.die.innerHTML = "\u2684";
-    //   } else if (this.value === 6) {
-    //     this.die.innerHTML = "\u2685";
-    //   }
-    // }
   }
 
   diceInfo() {
     this.die.className = "dice";
     this.die.id = "dice-info";
     diceContainer.append(this.die);
+  }
+
+  advanced() {
+    this.die.id = this.value;
+    this.die.innerHTML = this.value;
+
+    if (this.value === 1) {
+      this.die.innerHTML = "\u2680";
+    } else if (this.value === 2) {
+      this.die.innerHTML = "\u2681";
+    } else if (this.value === 3) {
+      this.die.innerHTML = "\u2682";
+    } else if (this.value === 4) {
+      this.die.innerHTML = "\u2683";
+    } else if (this.value === 5) {
+      this.die.innerHTML = "\u2684";
+    } else if (this.value === 6) {
+      this.die.innerHTML = "\u2685";
+    }
   }
 }
 
@@ -103,21 +107,21 @@ addDice.addEventListener("click", function (sum) {
 });
 
 // this btn isn't working yet
-advancedBtn.addEventListener("click", function () {
-  acutalDie = true;
-  diceArray.forEach((die) => {
-    if (this.value === 1) {
-      this.die.innerHTML = "\u2680";
-    } else if (this.value === 2) {
-      this.die.innerHTML = "\u2681";
-    } else if (this.value === 3) {
-      this.die.innerHTML = "\u2682";
-    } else if (this.value === 4) {
-      this.die.innerHTML = "\u2683";
-    } else if (this.value === 5) {
-      this.die.innerHTML = "\u2684";
-    } else if (this.value === 6) {
-      this.die.innerHTML = "\u2685";
-    }
-  });
-});
+// advancedBtn.addEventListener("click", function () {
+//   acutalDie = true;
+//   diceArray.forEach((die) => {
+//     if (this.value === 1) {
+//       this.die.innerHTML = "\u2680";
+//     } else if (this.value === 2) {
+//       this.die.innerHTML = "\u2681";
+//     } else if (this.value === 3) {
+//       this.die.innerHTML = "\u2682";
+//     } else if (this.value === 4) {
+//       this.die.innerHTML = "\u2683";
+//     } else if (this.value === 5) {
+//       this.die.innerHTML = "\u2684";
+//     } else if (this.value === 6) {
+//       this.die.innerHTML = "\u2685";
+//     }
+//   });
+// });
