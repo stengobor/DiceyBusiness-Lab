@@ -9,7 +9,6 @@ const rerollDice = document.createElement("button");
 rerollDice.innerHTML = "Re-Roll Dice";
 rerollDice.className = "btn2";
 
-
 const addDice = document.createElement("button");
 addDice.innerHTML = "Sum of Dice";
 addDice.className = "btn3";
@@ -31,6 +30,7 @@ document.body.appendChild(diceContainer);
 let counter = 1;
 let diceArray = [];
 let diceId = 0;
+let actualDice = false;
 function randomNum(min, max) {
   min = Math.ceil(1);
   max = Math.floor(7);
@@ -60,7 +60,6 @@ class Dice {
     this.die.addEventListener("click", () => this.roll());
     rerollDice.addEventListener("click", () => this.roll());
     advancedBtn.addEventListener("click", () => this.advanced());
-  
   }
 
   roll() {
@@ -78,20 +77,25 @@ class Dice {
   advanced() {
     this.die.id = this.value;
     this.die.innerHTML = this.value;
-
-    if (this.value === 1) {
-      this.die.innerHTML = "\u2680";
-    } else if (this.value === 2) {
-      this.die.innerHTML = "\u2681";
-    } else if (this.value === 3) {
-      this.die.innerHTML = "\u2682";
-    } else if (this.value === 4) {
-      this.die.innerHTML = "\u2683";
-    } else if (this.value === 5) {
-      this.die.innerHTML = "\u2684";
-    } else if (this.value === 6) {
-      this.die.innerHTML = "\u2685";
-    }
+  
+    // actualDice = true;
+    // diceArray.forEach((dice) => {
+    //   dice.die.classList.remove("dice");
+    //   dice.die.className = "prettyDie";
+      if (this.value === 1) {
+        this.die.innerHTML = "\u2680";
+      } else if (this.value === 2) {
+        this.die.innerHTML = "\u2681";
+      } else if (this.value === 3) {
+        this.die.innerHTML = "\u2682";
+      } else if (this.value === 4) {
+        this.die.innerHTML = "\u2683";
+      } else if (this.value === 5) {
+        this.die.innerHTML = "\u2684";
+      } else if (this.value === 6) {
+        this.die.innerHTML = "\u2685";
+      }
+    // });
   }
 }
 
