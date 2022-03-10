@@ -67,23 +67,20 @@ class Dice {
     diceContainer.append(this.die);
   }
 
-//   sumOfDice() {
-//     let result = diceArray.reduce((acc, val) => {
-//         return acc + val;
-//     });
-// }
-
-roll() {
-    this.value = diceRoll();
-    this.die.id = this.value;
-    this.die.innerHTML = " ";
-    //   diceArray.forEach(function() {
-    //     this.die.classList.add("shake")
-    //   });
-    //   setTimeout(function() {
-    //       this.die.remove("shake");
-    //   })
+  sumOfDice() {
+    this.value = value;
+    // let result = diceArray.reduce((acc, val) => {
+    //     return acc + val;
+    // });
   }
+
+//   class roll extends Dice {
+//     constructor(die, value) {
+//     this.value = diceRoll();
+//     this.die.id = this.value;
+//     this.die.innerHTML = " ";
+//   }
+// }
 }
 
 newDice.addEventListener("click", function () {
@@ -91,23 +88,14 @@ newDice.addEventListener("click", function () {
   counter++;
 });
 
-// addDice.addEventListener("click", function () {
-//     alert(result);
-// });
-
 // rerollDice.addEventListener("click", () => this.roll());
-// rerollDice.addEventListener("click", function() {
-//     diceArray.forEach(randomNum());
-//     diceArray.forEach = roll();
-// foreach over dicearray and call roll method
-// });
+rerollDice.addEventListener("click", function () {
+  diceArray.forEach(randomNum());
+  diceArray.forEach = roll();
+  // foreach over dicearray and call roll method
+});
 
-// addBtn.addEventListener("click", function(sum) {
-//     let sum = diceArray.reduce(this.value)
-//     alert(diceArray.reduce(sum));
-// });
-
-// addbtn.addEventListener("click", function sum(a, b) {
-//   return a + b;
-// });
-// alert(diceArray.reduce(sum));
+addBtn.addEventListener("click", function (sum) {
+  let sum = diceArray.reduce(this.value);
+  alert(diceArray.reduce(sum));
+});
