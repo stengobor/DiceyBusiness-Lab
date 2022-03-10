@@ -2,20 +2,20 @@ const div = document.createElement("div");
 div.className = "container";
 
 const newDice = document.createElement("button");
-newDice.textContent = "New Dice";
+newDice.innerHTML = "New Dice";
 newDice.className = "btn1";
 
 const rerollDice = document.createElement("button");
-rerollDice.textContent = "Re-Roll Dice";
+rerollDice.innerHTML = "Re-Roll Dice";
 rerollDice.className = "btn2";
 rerollDice.id = "btn2";
 
 const addDice = document.createElement("button");
-addDice.textContent = "Sum of Dice";
+addDice.innerHTML = "Sum of Dice";
 addDice.className = "btn3";
 
 const advancedBtn = document.createElement("button");
-advancedBtn.textContent = "Advanced!";
+advancedBtn.innerHTML = "Advanced!";
 advancedBtn.className = "btn4";
 
 const diceContainer = document.createElement("div");
@@ -30,6 +30,7 @@ document.body.appendChild(diceContainer);
 
 let counter = 1;
 let diceArray = [];
+let diceId = 0;
 function randomNum(min, max) {
   min = Math.ceil(1);
   max = Math.floor(7);
@@ -46,41 +47,48 @@ class Dice {
   constructor() {
     this.die = document.createElement("div");
     this.value = randomNum();
+    this.id = `${diceId++}`;
     this.diceInfo();
-    // this.sumOfDice();
-    // this.roll();
     this.die.append(this.value);
     diceArray.push(this);
+
     this.die.addEventListener("dblclick", () => {
       this.die.remove();
       const diceIndex = diceArray.indexOf(this);
       diceArray.splice(diceIndex, 1);
-      // run array.splice to remove the Dice object using DiceIndex
     });
-    // this.die.addEventListener("click", () => {
-    //     this.roll();
-    // });
+    this.die.addEventListener("click", () => this.roll());
+    rerollDice.addEventListener("click", () => this.roll());
+  
   }
+
+  roll() {
+    this.value = randomNum();
+    this.die.id = this.value;
+    this.die.innerHTML = this.value;
+
+    // if ((acutalDie = true)) {
+    //   if (this.value === 1) {
+    //     this.die.innerHTML = "\u2680";
+    //   } else if (this.value === 2) {
+    //     this.die.innerHTML = "\u2681";
+    //   } else if (this.value === 3) {
+    //     this.die.innerHTML = "\u2682";
+    //   } else if (this.value === 4) {
+    //     this.die.innerHTML = "\u2683";
+    //   } else if (this.value === 5) {
+    //     this.die.innerHTML = "\u2684";
+    //   } else if (this.value === 6) {
+    //     this.die.innerHTML = "\u2685";
+    //   }
+    // }
+  }
+
   diceInfo() {
     this.die.className = "dice";
     this.die.id = "dice-info";
     diceContainer.append(this.die);
   }
-
-  sumOfDice() {
-    this.value = value;
-    // let result = diceArray.reduce((acc, val) => {
-    //     return acc + val;
-    // });
-  }
-
-//   class roll extends Dice {
-//     constructor(die, value) {
-//     this.value = diceRoll();
-//     this.die.id = this.value;
-//     this.die.innerHTML = " ";
-//   }
-// }
 }
 
 newDice.addEventListener("click", function () {
@@ -88,14 +96,28 @@ newDice.addEventListener("click", function () {
   counter++;
 });
 
-// rerollDice.addEventListener("click", () => this.roll());
-rerollDice.addEventListener("click", function () {
-  diceArray.forEach(randomNum());
-  diceArray.forEach = roll();
-  // foreach over dicearray and call roll method
+addDice.addEventListener("click", function (sum) {
+  let counter = 0;
+  diceArray.forEach((die) => (counter += die.value));
+  alert(counter);
 });
 
-addBtn.addEventListener("click", function (sum) {
-  let sum = diceArray.reduce(this.value);
-  alert(diceArray.reduce(sum));
+// this btn isn't working yet
+advancedBtn.addEventListener("click", function () {
+  acutalDie = true;
+  diceArray.forEach((die) => {
+    if (this.value === 1) {
+      this.die.innerHTML = "\u2680";
+    } else if (this.value === 2) {
+      this.die.innerHTML = "\u2681";
+    } else if (this.value === 3) {
+      this.die.innerHTML = "\u2682";
+    } else if (this.value === 4) {
+      this.die.innerHTML = "\u2683";
+    } else if (this.value === 5) {
+      this.die.innerHTML = "\u2684";
+    } else if (this.value === 6) {
+      this.die.innerHTML = "\u2685";
+    }
+  });
 });
